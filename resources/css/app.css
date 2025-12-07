@@ -1,0 +1,142 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&family=Urbanist:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.dark {
+  --glass-bg: rgba(0, 0, 0, 0.2);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  transition: background-color 0.3s ease;
+}
+
+/* Light Mode */
+body:not(.dark) {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
+  color: #1e293b;
+}
+
+/* Dark Mode */
+body.dark {
+  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
+  color: #f1f5f9;
+}
+
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+/* Light Mode Glass */
+body:not(.dark) .glass {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+  color: #1e293b;
+}
+
+/* Dark Mode Glass */
+body.dark .glass {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+  color: #f1f5f9;
+}
+
+.glass-strong {
+  backdrop-filter: blur(30px) saturate(200%);
+  -webkit-backdrop-filter: blur(30px) saturate(200%);
+}
+
+/* Light Mode Glass Strong */
+body:not(.dark) .glass-strong {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+  color: #1e293b;
+}
+
+/* Dark Mode Glass Strong */
+body.dark .glass-strong {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+  color: #f1f5f9;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dark .gradient-text {
+  background: linear-gradient(135deg, #a78bfa 0%, #c084fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.main-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-top: 9rem; /* Mobile: Account for navbar + mobile nav */
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 2rem;
+  min-height: calc(100vh - 80px);
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .main-content {
+    padding-top: 7.5rem; /* Small screens */
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .main-content {
+    padding-top: 6.5rem; /* Desktop: navbar without mobile nav section + 20px extra */
+  }
+}
+
+/* Prevent body scroll when content is short */
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Fix for mobile viewport */
+@supports (-webkit-touch-callout: none) {
+  .main-content {
+    min-height: -webkit-fill-available;
+  }
+}
+
